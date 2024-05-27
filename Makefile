@@ -19,7 +19,7 @@ db-drop:
 
 db-create-migration:
 		@read -p  "What is the name of migration?" NAME; \
-		${MIGRATE} create -ext sql -seq -dir entities/migrations  $$NAME
+		${MIGRATE} create -ext sql -seq -dir domain/entity/migration  $$NAME
 test-all:
 	${DOCKER_COMMAND} exec web go test ./tests/tests/...
 
