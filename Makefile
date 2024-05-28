@@ -1,5 +1,5 @@
 include .env
-MIGRATE=migrate -path=entities/migrations -database "" -verbose
+MIGRATE=migrate -path=domain/entity/migration -database "$(DATABASE_HOST)" -verbose
 
 
 db-migrate-up:
