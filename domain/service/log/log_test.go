@@ -80,3 +80,19 @@ func TestService_Store(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkService_Store(b *testing.B) {
+	ctrl := gomock.NewController(b)
+	logRepoMock := repoMock.NewMockLog(ctrl)
+	logRepoMock.EXPECT().Store(gomock.Any(), gomock.Any()).Return(nil)
+	loggerMock := infraMock.NewMockLog(ctrl)
+
+	service := NewService(loggerMock, logRepoMock)
+	service.Store(context.Background(), &entity.Log{
+		Error:     "error",
+		CreatedAt: uint64(time.Now().Unix()),
+	})
+
+	loggerMock.EXPECT()
+	logRepoMock.EXPECT()
+}
