@@ -18,6 +18,7 @@ func NewLogRepository(env godotenv.Env) *LogRepository {
 	}
 	return lr
 }
+
 func (r LogRepository) Connect(ctx context.Context) error {
 	conn, err := pgx.Connect(ctx, r.env.PGSQLConnection)
 	if err != nil {
@@ -27,7 +28,7 @@ func (r LogRepository) Connect(ctx context.Context) error {
 	return nil
 }
 
-func (r LogRepository) Store(ctx context.Context, log entity.Log) error {
+func (r LogRepository) Store(ctx context.Context, log *entity.Log) error {
 	if _, err := r.conn.Exec(ctx, `INSERT INTO logs (created_at,error) VALUES($1,$2)  `,
 		log.CreatedAt, log.Error); err != nil {
 		return err

@@ -1,6 +1,6 @@
-package log
+package logger
 
-type Log interface {
+type Logger interface {
 	Error(err error)
 	Warning(message string)
 	Info(message string)
