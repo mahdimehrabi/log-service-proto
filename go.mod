@@ -1,4 +1,4 @@
-module log-service-proto
+module m1-log-service
 
 go 1.21
 

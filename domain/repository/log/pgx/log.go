@@ -3,8 +3,8 @@ package pgx
 import (
 	"context"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"log-service-proto/domain/entity"
-	"log-service-proto/infrastructure/godotenv"
+	"m1-log-service/domain/entity"
+	"m1-log-service/infrastructure/godotenv"
 )
 
 type LogRepository struct {

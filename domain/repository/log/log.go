@@ -2,7 +2,7 @@ package log
 
 import (
 	"context"
-	"log-service-proto/domain/entity"
+	"m1-log-service/domain/entity"
 )
 
 type Log interface {

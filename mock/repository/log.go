@@ -6,7 +6,7 @@ package mock_log
 
 import (
 	context "context"
-	entity "log-service-proto/domain/entity"
+	entity "m1-log-service/domain/entity"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"

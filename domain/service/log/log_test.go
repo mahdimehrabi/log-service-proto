@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 	"github.com/golang/mock/gomock"
-	"log-service-proto/domain/entity"
-	infraMock "log-service-proto/mock/infrastructure"
-	repoMock "log-service-proto/mock/repository"
+	"m1-log-service/domain/entity"
+	infraMock "m1-log-service/mock/infrastructure"
+	repoMock "m1-log-service/mock/repository"
 	"testing"
 	"time"
 )

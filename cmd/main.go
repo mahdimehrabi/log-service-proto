@@ -1,6 +1,6 @@
 package main
 
-import "log-service-proto/application/grpc"
+import "m1-log-service/application/grpc"
 
 func main() {
 	grpc.Boot()

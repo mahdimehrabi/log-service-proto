@@ -2,9 +2,9 @@ package log
 
 import (
 	"context"
-	"log-service-proto/domain/entity"
-	logRepo "log-service-proto/domain/repository/log"
-	loggerInfra "log-service-proto/infrastructure/log"
+	"m1-log-service/domain/entity"
+	logRepo "m1-log-service/domain/repository/log"
+	loggerInfra "m1-log-service/infrastructure/log"
 )
 
 type Service struct {

@@ -8,11 +8,11 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"
-	"log-service-proto/application/grpc/server"
-	"log-service-proto/domain/repository/log/pgx"
-	logService "log-service-proto/domain/service/log"
-	"log-service-proto/infrastructure/godotenv"
-	"log-service-proto/infrastructure/log/zerolog"
+	"m1-log-service/application/grpc/server"
+	"m1-log-service/domain/repository/log/pgx"
+	logService "m1-log-service/domain/service/log"
+	"m1-log-service/infrastructure/godotenv"
+	"m1-log-service/infrastructure/log/zerolog"
 	"net"
 )
 

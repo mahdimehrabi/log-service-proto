@@ -5,9 +5,9 @@ import (
 	logv1 "github.com/mahdimehrabi/m1-log-proto/gen/go/log/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"log-service-proto/domain/entity"
-	"log-service-proto/domain/service/log"
-	logger "log-service-proto/infrastructure/log"
+	"m1-log-service/domain/entity"
+	"m1-log-service/domain/service/log"
+	logger "m1-log-service/infrastructure/log"
 )
 
 type LogServer struct {
