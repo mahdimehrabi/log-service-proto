@@ -2,30 +2,22 @@ package pgx
 
 import (
 	"context"
-	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"log-service-proto/domain/entity"
 	"log-service-proto/infrastructure/godotenv"
 )
 
 type LogRepository struct {
 	env  *godotenv.Env
-	conn *pgx.Conn
+	conn *pgxpool.Pool
 }
 
-func NewLogRepository(env *godotenv.Env) *LogRepository {
+func NewLogRepository(env *godotenv.Env, conn *pgxpool.Pool) *LogRepository {
 	lr := &LogRepository{
-		env: env,
+		env:  env,
+		conn: conn,
 	}
 	return lr
-}
-
-func (r LogRepository) Connect(ctx context.Context) error {
-	conn, err := pgx.Connect(ctx, r.env.PGSQLConnection)
-	if err != nil {
-		return err
-	}
-	r.conn = conn
-	return nil
 }
 
 func (r LogRepository) Store(ctx context.Context, log *entity.Log) error {

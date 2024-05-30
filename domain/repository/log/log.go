@@ -7,5 +7,4 @@ import (
 
 type Log interface {
 	Store(context.Context, *entity.Log) error
-	Connect(context.Context) error
 }
