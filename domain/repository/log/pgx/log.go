@@ -8,11 +8,11 @@ import (
 )
 
 type LogRepository struct {
-	env  godotenv.Env
+	env  *godotenv.Env
 	conn *pgx.Conn
 }
 
-func NewLogRepository(env godotenv.Env) *LogRepository {
+func NewLogRepository(env *godotenv.Env) *LogRepository {
 	lr := &LogRepository{
 		env: env,
 	}

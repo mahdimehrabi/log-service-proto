@@ -8,7 +8,11 @@ import (
 
 type Env struct {
 	PGSQLConnection string
-	Port            string
+	ServerAddr      string
+}
+
+func NewEnv() *Env {
+	return &Env{}
 }
 
 func (e *Env) Load() {
@@ -16,5 +20,5 @@ func (e *Env) Load() {
 		log.Fatal(err)
 	}
 	e.PGSQLConnection = os.Getenv("PGSQLCONNECTION")
-	e.Port = os.Getenv("PORT")
+	e.ServerAddr = os.Getenv("ServerAddr")
 }
