@@ -7,14 +7,18 @@ import (
 )
 
 type Env struct {
-	PGSQLConnection string
-	Port            string
+	DATABASE_HOST string
+	ServerAddr    string
+}
+
+func NewEnv() *Env {
+	return &Env{}
 }
 
 func (e *Env) Load() {
 	if err := godotenv.Load(".env"); err != nil {
 		log.Fatal(err)
 	}
-	e.PGSQLConnection = os.Getenv("PGSQLCONNECTION")
-	e.Port = os.Getenv("PORT")
+	e.DATABASE_HOST = os.Getenv("DATABASE_HOST")
+	e.ServerAddr = os.Getenv("ServerAddr")
 }
