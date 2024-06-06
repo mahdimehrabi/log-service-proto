@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"errors"
 	logv1 "github.com/mahdimehrabi/m1-log-proto/gen/go/log/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -28,6 +29,7 @@ func (l LogServer) StoreLog(server logv1.LogService_StoreLogServer) error {
 			logErr, err := server.Recv()
 			if err != nil {
 				chErr <- err
+				return
 			}
 			log := entity.NewLog(logErr.Error)
 			if err := l.logService.Store(context.Background(), log); err != nil {
@@ -38,7 +40,9 @@ func (l LogServer) StoreLog(server logv1.LogService_StoreLogServer) error {
 
 	<-chErr
 	if err := server.SendAndClose(&logv1.Empty{}); err != nil {
-		l.logger.Error(err)
+		if !errors.Is(err, context.Canceled) {
+			l.logger.Error(err)
+		}
 	}
 
 	return status.Errorf(codes.Internal, "internal server error")
