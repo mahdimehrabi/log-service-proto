@@ -24,3 +24,4 @@ go.work
 # Environment files
 .idea
 .env
+vendor
