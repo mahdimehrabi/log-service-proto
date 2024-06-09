@@ -1,0 +1,49 @@
+version: "3.4"
+
+services: 
+  log-service:
+    build:
+      context: ./m1-log-service/
+      dockerfile: ./Dockerfile
+    env_file: ./m1-log-service/.env
+    restart: always
+    expose:
+      - 8000
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    depends_on:
+      - database
+
+  database: 
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
+    restart: always
+    expose:
+      - 5432
+    volumes:
+      - psql_data:/var/lib/postgresql/data
+
+  article-service:
+    build:
+      context: ./m1-article-service/
+      dockerfile: ./Dockerfile
+    env_file: ./m1-article-service/.env
+    restart: always
+    expose:
+      - 8000
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    depends_on:
+      - database
+      - log-service
+
+
+volumes:
+  psql_data: 
+    external: true
